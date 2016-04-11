@@ -3,9 +3,10 @@
 
 import psycopg2
 import sys
+import csv
 
 
-def fett():
+def fett() -> object:
     print("This is fat!")
 
 
@@ -13,6 +14,9 @@ print("Detta er fett")
 verdi = 30
 
 fett()
+
+str = "0000000this is string example....wow!!!0000000";
+print (str.strip('e'))
 
 for x in range(0, 5):
     print("We're on time %d" % (x))
@@ -38,5 +42,17 @@ except psycopg2.DatabaseError as e:
 finally:
     if con:
         con.close()
+
+with open('/Users/PKN/Downloads/HLMH.txt', 'r') as b:
+    print(b.read())
+
+with open('/Users/PKN/Downloads/HLMH.txt', 'r') as f:
+    data = f.readlines()
+
+    for line in data:
+        words = line.split(';')
+        print(words[0].strip('t'))
+
+        print(words[0].replace('t', ''))
 
 fett()
