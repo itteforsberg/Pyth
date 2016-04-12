@@ -16,10 +16,11 @@ verdi = 30
 fett()
 
 str = "0000000this is string example....wow!!!0000000";
-print (str.strip('e'))
+print(str.strip('e'))
 
 for x in range(0, 5):
-    print("We're on time %d" % (x))
+    y = 39
+    print("We're on time %d" % x)
     print(verdi + x)
 
 con = None
@@ -27,11 +28,17 @@ con = None
 try:
     con = psycopg2.connect(database='postgres', user='PKN')
     cur = con.cursor()
+
     cur.execute('SELECT * FROM public."ropd_Revisjonsoppdrag"')
+    cur.execute('SELECT "ropdOppdragsnavn" FROM public."ropd_Revisjonsoppdrag"')
 
     rows = cur.fetchall()
     for row in rows:
         print(row)
+
+    #cur.execute('CREATE TABLE public."employment" (year integer PRIMARY KEY, age integer, alternative varchar(4), '
+    #            'people integer)')
+    #con.commit()
 
     fett()
 
@@ -43,16 +50,18 @@ finally:
     if con:
         con.close()
 
-with open('/Users/PKN/Downloads/HLMH.txt', 'r') as b:
-    print(b.read())
+with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
+    firstline = f.readline()
+    firstwords = firstline.split(';')
 
-with open('/Users/PKN/Downloads/HLMH.txt', 'r') as f:
     data = f.readlines()
+    words = data.split(';')
 
-    for line in data:
-        words = line.split(';')
-        print(words[0].strip('t'))
+    for line in range(0, 5):
 
-        print(words[0].replace('t', ''))
+
+        print(words[0].replace('"', ''))
+
+        #cur.execute("INSERT INTO employment VALUES(1,'Audi',52642)")
 
 fett()
