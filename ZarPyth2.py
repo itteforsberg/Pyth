@@ -55,9 +55,9 @@ with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
     firstwords = firstline.split(';')
 
     data = f.readlines()
-    words = data.split(';')
 
-    for line in range(0, 5):
+    for line in data:
+        words = line.split(';')
 
 
         print(words[0].replace('"', ''))
