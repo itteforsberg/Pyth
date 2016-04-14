@@ -61,14 +61,21 @@ with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
 
     for line in data:
         words = line.split(';')
+        label = ('age_%d' %i)
+        print(label)
+
+        query = "ALTER TABLE employment ADD %s INT" % (label)
+        cur.execute(query)
+        con.commit()
 
         #print(words[0].replace('"', ''))
 
-        antall = words[0]
-        print(antall)
+        for year in range(2014, 2101, 1):
+            antall = words[year - 2014]
+            #print('%s: %s' %(year, antall))
 
-        cur.execute("INSERT INTO employment VALUES(%d, 0, 'MMMM', %d)" % (int(firstwords[i].replace('"', '')), int(words[i].replace('"', ''))))
-        con.commit()
+            #cur.execute("INSERT INTO employment VALUES(%d, %s, 'MMMM', %d)" % (int(year), label, int(antall)))
+            #con.commit()
 
         i += 1
 
