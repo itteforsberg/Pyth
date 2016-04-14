@@ -20,7 +20,7 @@ print(str.strip('e'))
 
 for x in range(0, 5):
     y = 39
-    print("We're on time %d" % x)
+    print("We're on time %d %d" % (x, x))
     print(verdi + x)
 
 con = None
@@ -46,22 +46,30 @@ except psycopg2.DatabaseError as e:
     print('Error %s' % e)
     sys.exit(1)
 
-finally:
-    if con:
-        con.close()
+#finally:
+    #if con:
+    #    con.close()
 
 with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
     firstline = f.readline()
+    print(firstline)
     firstwords = firstline.split(';')
-
+    print(int(firstwords[2].replace('"', '')))
     data = f.readlines()
+
+    i = 0
 
     for line in data:
         words = line.split(';')
 
+        #print(words[0].replace('"', ''))
 
-        print(words[0].replace('"', ''))
+        antall = words[0]
+        print(antall)
 
-        #cur.execute("INSERT INTO employment VALUES(1,'Audi',52642)")
+        cur.execute("INSERT INTO employment VALUES(%d, 0, 'MMMM', %d)" % (int(firstwords[i].replace('"', '')), int(words[i].replace('"', ''))))
+        con.commit()
+
+        i += 1
 
 fett()
