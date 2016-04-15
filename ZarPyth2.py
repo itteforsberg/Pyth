@@ -36,9 +36,9 @@ try:
     for row in rows:
         print(row)
 
-    #cur.execute('CREATE TABLE public."employment" (year integer PRIMARY KEY, age integer, alternative varchar(4), '
+    # cur.execute('CREATE TABLE public."employment" (year integer PRIMARY KEY, age integer, alternative varchar(4), '
     #            'people integer)')
-    #con.commit()
+    # con.commit()
 
     fett()
 
@@ -46,10 +46,10 @@ except psycopg2.DatabaseError as e:
     print('Error %s' % e)
     sys.exit(1)
 
-#finally:
-    #if con:
-    #    con.close()
-
+# finally:
+# if con:
+#    con.close()
+"""
 with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
     firstline = f.readline()
     print(firstline)
@@ -61,22 +61,25 @@ with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
 
     for line in data:
         words = line.split(';')
-        label = ('age_%d' %i)
+        label = ('age_%d' % i)
         print(label)
 
-        query = "ALTER TABLE employment ADD %s INT" % (label)
-        cur.execute(query)
-        con.commit()
+        # query = "ALTER TABLE employment ADD %s INT" % (label)
 
-        #print(words[0].replace('"', ''))
+        # cur.execute(query)
+        # con.commit()
+
+        # print(words[0].replace('"', ''))
 
         for year in range(2014, 2101, 1):
             antall = words[year - 2014]
-            #print('%s: %s' %(year, antall))
+            # print('%s: %s' %(year, antall))
+            # cur.execute("INSERT INTO employment VALUES(%d, %s, 'MMMM', %d)" % (int(year), label, int(antall)))
+            # con.commit()
 
-            #cur.execute("INSERT INTO employment VALUES(%d, %s, 'MMMM', %d)" % (int(year), label, int(antall)))
-            #con.commit()
+            cur.execute("UPDATE employment SET %s = %d WHERE year = %d" %(label, int(antall), int(year)))
+            con.commit()
 
         i += 1
-
+"""
 fett()
