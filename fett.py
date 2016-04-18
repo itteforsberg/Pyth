@@ -1,0 +1,1 @@
+print "Detta er fett1"

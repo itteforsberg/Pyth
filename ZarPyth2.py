@@ -49,6 +49,7 @@ except psycopg2.DatabaseError as e:
 # finally:
 # if con:
 #    con.close()
+
 """
 with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
     firstline = f.readline()
@@ -82,4 +83,11 @@ with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
 
         i += 1
 """
+
+cur.execute('SELECT sum_ages(age_1, age_2) FROM employment WHERE year = 2020')
+
+rows = cur.fetchall()
+for row in rows:
+    print(row)
+
 fett()
