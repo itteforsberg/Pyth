@@ -1,11 +1,13 @@
-y = 54
-print(id(y))
-print(y)
+fett = 23
+print(fett)
 
-y = "Detta er fett!"
-print(id(y))
-print(y)
+name = input("What's your name? ")
+print("Nice to meet you " + name + "!")
 
-y = 42
-print(id(y))
-print(y)
+person = input("Nationality? ")
+if person == "french":
+    print("Préférez-vous parler français?")
+elif person == "norsk":
+    print("Detta er fett!")
+else:
+    print("Good afternoon")
