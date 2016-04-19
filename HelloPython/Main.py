@@ -28,3 +28,10 @@ while counter <= n:
     counter += 1
 
 print("Sum of 1 until %d: %d" % (n,s))
+
+languages = ["C", "C++", "Perl", "Python"]
+for x in languages:
+    print(x)
+
+range(1, 10, 2)
+print(list(range(1, 10, 2)))
