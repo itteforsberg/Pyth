@@ -1,37 +1,36 @@
 #!/usr/bin/env python3
+import xyz
+import doctest
+import unittest
+import sys
+from math import *
 
 fett = 23
 print(fett)
 
-a = 5
-b = 13
+sum = lambda x, y : x + y
+print(sum(3, 4))
 
-maks = a if (a > b) else b
+def fahrenheit(T):
+    return ((float(9)/5)*T + 32)
 
-print(maks)
+temperatures = (36.5, 37, 37.5, 38, 39)
+F = map(fahrenheit, temperatures)
+print (list(F))
 
-#x = float(input("1st Number: "))
-#y = float(input("2nd Number: "))
-#z = float(input("3rd Number: "))
+temperatures_in_Fahrenheit = list(map(fahrenheit, temperatures))
+print(temperatures_in_Fahrenheit)
 
-#maximum = max((x, y, z))
+F = list(map(lambda x: (float(9)/5)*x + 32, temperatures))
+print(F)
 
-#print("The maximal value is: " + str(maximum))
+a = [1,2,3,4]
+b = [17,12,11,10]
+c = [-1,-4,5,9]
+fett = list(map(lambda x,y:x+y, a,b))
 
-n = 100
+print(fett)
 
-s = 0
-counter = 1
-while counter <= n:
-    s = s + counter
-    print(s)
-    counter += 1
-
-print("Sum of 1 until %d: %d" % (n,s))
-
-languages = ["C", "C++", "Perl", "Python"]
-for x in languages:
-    print(x)
-
-range(1, 10, 2)
-print(list(range(1, 10, 2)))
+fibonacci = [0,1,1,2,3,5,8,13,21,34,55]
+odd_numbers = list(filter(lambda x: x % 2, fibonacci))
+print(odd_numbers)
