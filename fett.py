@@ -1,1 +1,2 @@
-print "Detta er fett1"
+def fettpy():
+    print ("Detta er fett.py!")

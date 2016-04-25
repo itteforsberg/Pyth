@@ -4,43 +4,39 @@
 import psycopg2
 import sys
 import csv
+import fett
+from sas7bdat import SAS7BDAT
 
-
-def fett() -> object:
+def fet() -> object:
     print("This is fat!")
 
+fet()
 
-print("Detta er fett")
-verdi = 30
+with SAS7BDAT('/Users/PKN/Documents/Source/tabe.sas7bdat') as f:
+    for row in f:
+        print(row)
 
-fett()
+fett.fettpy()
 
-str = "0000000this is string example....wow!!!0000000";
-print(str.strip('e'))
-
-for x in range(0, 5):
-    y = 39
-    print("We're on time %d %d" % (x, x))
-    print(verdi + x)
-
-con = None
+#con = None
 
 try:
     con = psycopg2.connect(database='postgres', user='PKN')
     cur = con.cursor()
 
     cur.execute('SELECT * FROM public."ropd_Revisjonsoppdrag"')
-    cur.execute('SELECT "ropdOppdragsnavn" FROM public."ropd_Revisjonsoppdrag"')
+    # cur.execute('SELECT "ropdOppdragsnavn" FROM public."ropd_Revisjonsoppdrag"')
 
     rows = cur.fetchall()
     for row in rows:
-        print(row)
+        words = row[1]
+        print(words)
 
     # cur.execute('CREATE TABLE public."employment" (year integer PRIMARY KEY, age integer, alternative varchar(4), '
     #            'people integer)')
     # con.commit()
 
-    fett()
+    fet()
 
 except psycopg2.DatabaseError as e:
     print('Error %s' % e)
@@ -84,10 +80,10 @@ with open('/Users/PKN/Downloads/MMMM3.csv', 'r') as f:
         i += 1
 """
 
-cur.execute('SELECT sum_ages(age_1, age_2) FROM employment WHERE year = 2020')
+cur.execute('SELECT sum_ages(age_1, age_1) FROM employment WHERE year = 2030')
 
 rows = cur.fetchall()
 for row in rows:
     print(row)
 
-fett()
+fett.fettpy()
